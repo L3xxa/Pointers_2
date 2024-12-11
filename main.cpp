@@ -29,7 +29,37 @@ int main() {
     cout << endl;
 
     int *C = new int [M + N];
+    int fact_size = 0;
+
+    bool is_unical = true;
+    for (int i = 0; i < M; i++) {
+        is_unical = true;
+        for (int j = 0; j < N; j++) {
+            if (A[i] == B[j]) {
+                is_unical = false;
+                break;
+            }
+        }
+        for (int k = 0; k < fact_size; k++) {
+            if (C[k] == A[i]) {
+                is_unical = false;
+                break;
+            }
+        }
+        if (is_unical) {
+            C[fact_size] = A[i];
+            fact_size++;
+        }
+    }
+
+    cout << "Array C: ";
+    for (int i = 0; i < fact_size; i++) {
+        cout << C[i] << " ";
+    }
 
 
+    delete [] A;
+    delete[] B;
+    delete[] C;
     return 0;
 }
